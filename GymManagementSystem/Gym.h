@@ -5,33 +5,34 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
 class Member {
 public:
-    std::string name;
-    std::string membershipType;
+    string name;
+    string membershipType;
     double fee;
     bool isActive;
 
-    Member(std::string name, std::string membershipType, double fee);
+    Member(string name, string membershipType, double fee);
     void display();
 };
 
 class Trainer {
 public:
-    std::string name;
+    string name;
     int experience;
 
-    Trainer(std::string name, int experience);
+    Trainer(string name, int experience);
     void display();
 };
 
 class Equipment {
 public:
-    std::string name;
+    string name;
     bool isAvailable;
     int usageCount;  
 
-    Equipment(std::string name);
+    Equipment(string name);
     void display();
     void toggleAvailability();
     void incrementUsage();
@@ -39,11 +40,11 @@ public:
 
 class Schedule {
 public:
-    std::string workoutType;
-    std::string trainerName;
-    std::string time;
+    string workoutType;
+    string trainerName;
+    string time;
 
-    Schedule(std::string workoutType, std::string trainerName, std::string time);
+    Schedule(string workoutType, string trainerName, string time);
     void display();
 };
 
@@ -54,28 +55,28 @@ public:
 
 class Gym {
 private:
-    std::vector<Member> members;
-    std::vector<Trainer> trainers;
-    std::vector<Equipment> equipments;
-    std::vector<Schedule> schedules;
+    vector<Member> members;
+    vector<Trainer> trainers;
+    vector<Equipment> equipments;
+    vector<Schedule> schedules;
     Billing billing;
 
 public:
-    void addMember(std::string name, std::string membershipType, double fee);
-    void removeMember(std::string name);
-    void updateMember(std::string name, std::string newMembershipType, double newFee);
-    void addTrainer(std::string name, int experience);
-    void addEquipment(std::string name);
-    void addSchedule(std::string workoutType, std::string trainerName, std::string time);
-    void assignTrainingSession(std::string memberName, std::string workoutType);
+    void addMember(string name, string membershipType, double fee);
+    void removeMember(string name);
+    void updateMember(string name, string newMembershipType, double newFee);
+    void addTrainer(string name, int experience);
+    void addEquipment(string name);
+    void addSchedule(string workoutType, string trainerName, string time);
+    void assignTrainingSession(string memberName, string workoutType);
     void displayMembers();
     void displayTrainers();
     void displayEquipments();
     void displaySchedules();
-    void searchMemberByName(std::string name);
+    void searchMemberByName(string name);
     void generateReport();
-    void generateBill(std::string memberName);
-    void incrementEquipmentUsage(std::string equipmentName);
+    void generateBill(string memberName);
+    void incrementEquipmentUsage(string equipmentName);
 };
 
 #endif // GYM_H

@@ -1,27 +1,27 @@
 #include "Gym.h"
 
 //Member
-Member::Member(std::string name, std::string membershipType, double fee)
+Member::Member(string name, string membershipType, double fee)
     : name(name), membershipType(membershipType), fee(fee), isActive(true) {}
 
 void Member::display() {
-    std::cout << "Member: " << name << ", Membership Type: " << membershipType
-        << ", Fee: $" << fee << ", Active: " << (isActive ? "Yes" : "No") << std::endl;
+    cout << "Member: " << name << ", Membership Type: " << membershipType
+        << ", Fee: $" << fee << ", Active: " << (isActive ? "Yes" : "No") << endl;
 }
 
 //Trainer
-Trainer::Trainer(std::string name, int experience) : name(name), experience(experience) {}
+Trainer::Trainer(string name, int experience) : name(name), experience(experience) {}
 
 void Trainer::display() {
-    std::cout << "Trainer: " << name << ", Experience: " << experience << " years" << std::endl;
+    cout << "Trainer: " << name << ", Experience: " << experience << " years" << endl;
 }
 
 //Equipment 
-Equipment::Equipment(std::string name) : name(name), isAvailable(true), usageCount(0) {}
+Equipment::Equipment(string name) : name(name), isAvailable(true), usageCount(0) {}
 
 void Equipment::display() {
-    std::cout << "Equipment: " << name << ", Available: " << (isAvailable ? "Yes" : "No")
-        << ", Usage Count: " << usageCount << std::endl;
+    cout << "Equipment: " << name << ", Available: " << (isAvailable ? "Yes" : "No")
+        << ", Usage Count: " << usageCount << endl;
 }
 
 void Equipment::toggleAvailability() {
@@ -33,12 +33,12 @@ void Equipment::incrementUsage() {
 }
 
 //Schedule 
-Schedule::Schedule(std::string workoutType, std::string trainerName, std::string time)
+Schedule::Schedule(string workoutType, string trainerName, string time)
     : workoutType(workoutType), trainerName(trainerName), time(time) {}
 
 void Schedule::display() {
-    std::cout << "Workout: " << workoutType << ", Trainer: " << trainerName
-        << ", Time: " << time << std::endl;
+    cout << "Workout: " << workoutType << ", Trainer: " << trainerName
+        << ", Time: " << time << endl;
 }
 
 //Billing 
@@ -53,47 +53,47 @@ double Billing::calculateBill(Member& member) {
 }
 
 //Gym Methods
-void Gym::addMember(std::string name, std::string membershipType, double fee) {
+void Gym::addMember(string name, string membershipType, double fee) {
     members.push_back(Member(name, membershipType, fee));
 }
 
-void Gym::removeMember(std::string name) {
+void Gym::removeMember(string name) {
     for (auto& member : members) {
         if (member.name == name) {
             member.isActive = false;
-            std::cout << "Member " << name << " has been deactivated." << std::endl;
+            cout << "Member " << name << " has been deactivated." << endl;
             return;
         }
     }
-    std::cout << "Member not found!" << std::endl;
+    cout << "Member not found!" << endl;
 }
 
-void Gym::updateMember(std::string name, std::string newMembershipType, double newFee) {
+void Gym::updateMember(string name, string newMembershipType, double newFee) {
     for (auto& member : members) {
         if (member.name == name) {
             member.membershipType = newMembershipType;
             member.fee = newFee;
-            std::cout << "Member " << name << " updated successfully." << std::endl;
+            cout << "Member " << name << " updated successfully." << endl;
             return;
         }
     }
-    std::cout << "Member not found!" << std::endl;
+    cout << "Member not found!" << endl;
 }
 
-void Gym::addTrainer(std::string name, int experience) {
+void Gym::addTrainer(string name, int experience) {
     trainers.push_back(Trainer(name, experience));
 }
 
-void Gym::addEquipment(std::string name) {
+void Gym::addEquipment(string name) {
     equipments.push_back(Equipment(name));
 }
 
-void Gym::addSchedule(std::string workoutType, std::string trainerName, std::string time) {
+void Gym::addSchedule(string workoutType, string trainerName, string time) {
     schedules.push_back(Schedule(workoutType, trainerName, time));
 }
 
-void Gym::assignTrainingSession(std::string memberName, std::string workoutType) {
-    std::cout << "Assigned " << workoutType << " session to member " << memberName << std::endl;
+void Gym::assignTrainingSession(string memberName, string workoutType) {
+    cout << "Assigned " << workoutType << " session to member " << memberName << endl;
 }
 
 void Gym::displayMembers() {
@@ -120,18 +120,18 @@ void Gym::displaySchedules() {
     }
 }
 
-void Gym::searchMemberByName(std::string name) {
+void Gym::searchMemberByName(string name) {
     for (auto& member : members) {
         if (member.name == name) {
             member.display();
             return;
         }
     }
-    std::cout << "Member not found!" << std::endl;
+    cout << "Member not found!" << endl;
 }
 
 void Gym::generateReport() {
-    std::cout << "\nGenerating report of active members:\n";
+    cout << "\nGenerating report of active members:\n";
     for (auto& member : members) {
         if (member.isActive) {
             member.display();
@@ -139,24 +139,24 @@ void Gym::generateReport() {
     }
 }
 
-void Gym::generateBill(std::string memberName) {
+void Gym::generateBill(string memberName) {
     for (auto& member : members) {
         if (member.name == memberName && member.isActive) {
             double billAmount = billing.calculateBill(member);
-            std::cout << "Bill for " << member.name << ": $" << billAmount << std::endl;
+            cout << "Bill for " << member.name << ": $" << billAmount << endl;
             return;
         }
     }
-    std::cout << "Member not found or inactive!" << std::endl;
+    cout << "Member not found or inactive!" << endl;
 }
 
-void Gym::incrementEquipmentUsage(std::string equipmentName) {
+void Gym::incrementEquipmentUsage(string equipmentName) {
     for (auto& equipment : equipments) {
         if (equipment.name == equipmentName) {
             equipment.incrementUsage();
-            std::cout << "Equipment " << equipmentName << " usage count updated." << std::endl;
+            cout << "Equipment " << equipmentName << " usage count updated." << endl;
             return;
         }
     }
-    std::cout << "Equipment not found!" << std::endl;
+    cout << "Equipment not found!" << endl;
 }
